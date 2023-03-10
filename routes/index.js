@@ -1,9 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const router = require('express').Router()
+const authorize = require('../middleware/authorize')
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
 
-module.exports = router;
+router.get('/', authorize, (req, res) => {
+    console.log('User logged out');
+    res.render('index', { title:"Todoapp"} ) 
+})
+ 
+module.exports = router
