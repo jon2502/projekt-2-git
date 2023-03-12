@@ -1,41 +1,41 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
-var app = express();
+const express = require('express')
+require('dotenv').config()
+const path = require('path')
+const methodOverride = require('method-override')
+const cookieParser = require('cookie-parser')
+const app = express()
+const cookieJwtAuth = require('./middleware/cookieJwtAuth')
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'pug')
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// Routes
+const indexRouter = require('./routes/index')
+const userRoute = require('./routes/users')
+const todoRoute = require('./routes/todos');
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// To pass data
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+app.use(methodOverride('_method'))
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+// Allow static files
+app.use(express.static(path.join(__dirname, "public")))
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+// Allow cookie parsing:
+app.use(cookieParser())
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+// Allow POST methods to update db GOES HERE:
 
-module.exports = app;
+// Setup routes
+app.use('/users', userRoute)
+app.use('/todos', cookieJwtAuth, todoRoute)
+
+// Index router / frontpage
+app.use('/', indexRouter)
+
+
+app.listen(process.env.PORT, () => {
+    console.log(`Example app listening on port ${process.env.PORT}`)
+  })

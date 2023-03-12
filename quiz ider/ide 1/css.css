@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
+body {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: -25px;
+}
+header {
+    width: 100%;
+    height: 75px;
+    background-color: #2246AC;
+    margin-bottom: 0%;
+}
+h1 {
+    text-align: center;
+    font-size: 50px;
+    color: #fff;
+    font-family: 'Russo One', sans-serif;
+    margin-top: 25px;
+    margin-bottom: 7px;
+}
+.bluebox {
+    width: 100%;
+    height: 850px;
+    background-color: #2246AC;
+    color: #fff
+}
+.tekstkasse {
+    width: 40%;
+    height: 25%;
+    font-size: 20px;
+    line-height: 25px;
+    position: relative;
+    left: 56%;
+    bottom: 93%;
+    font-family: 'Open Sans', sans-serif;
+}
+#linegrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+}
+.imagebox {
+    margin-top: 50px;
+    margin-bottom: 170px;
+    margin-left: 60px;
+    width: 50%;
+}
+.bluebox>.character {
+    width: 15%;
+    position: relative;
+    right: 38px;
+    bottom: 10%;
+}
+.startknap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 150px;
+}
+.startknap>button{
+    width: 720px;
+    height: 100px;
+    border-radius: 75px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    background-color: #2246AC;
+    color: #fff;
+    font-size: 50px;
+    font-family: 'Russo One', sans-serif;
+    cursor: pointer;
+}
+#question {
+    display: none;
+    width: 100%;
+    height: 1005px;
+    background-color: #fff;
+}
+.box {
+    display: flex;
+    justify-content: center;
+    margin-top: 45px;
+}
+.box>.character2{
+    width: 348px;
+    position: relative;
+}
+#tekst>p {
+    position: relative;
+    width: 950px;
+    height: 60px;
+    font-size: 25px;
+    line-height: 33px;
+    font-family: 'Open Sans', sans-serif;
+}
+#tekst>li {
+    margin-left: 50px;
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+.questionbox2{
+    display: flex;
+    justify-content: center;
+}
+.questions {
+    width: 1393px;
+    height: 566px;
+    display: grid;
+    grid-template-columns: 694px 964px;
+    grid-gap: 5px;
+}
+.questions>button {
+    width: 694px;
+    height: 278px;
+    background-color: #2246AC;
+    font-size: 70px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+}
+#rightanswer {
+    display: none;
+    width: 100%;
+    height: 1005px;
+    background-color: #fff;
+}
+.righttext{
+    display: flex;
+    justify-content: center;
+}
+.righttext>p {
+    width: 1015px;
+    height: 240px;
+    font-size: 25px;
+    line-height: 33px;
+    text-align: center;
+    margin-top: 150px;
+    font-family: 'Open Sans', sans-serif;
+}
+.right2 {
+    display: flex;
+    justify-content: center;
+}
+.right2>p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 882px;
+    height: 129px;
+    margin-top: 20px;
+    border-radius: 65px;
+    background-color: #00A226;
+    text-align: center;
+    font-size: 75px;
+    font-family: 'Russo One', sans-serif;
+    color: #fff;
+}
+.rightbutton {
+    display: flex;
+    justify-content: center;
+}
+.rightbutton>button{
+    margin-top: 50px;
+    width: 650px;
+    height: 163px;
+    background-color: #2246AC;
+    font-family: 'Russo One', sans-serif;
+    font-size: 60px;
+    color: #fff;
+    cursor: pointer;
+}
+#wronganswer {
+    display: none;
+    width: 100%;
+    height: 1005px;
+    background-color: #fff;
+}
+.wrongtext {
+    display: flex;
+    justify-content: center;
+}
+.wrongtext>p {
+    width: 1015px;
+    height: 240px;
+    font-size: 25px;
+    line-height: 33px;
+    text-align: center;
+    margin-top: 150px;
+    font-family: 'Open Sans', sans-serif;
+}
+.wrong2{
+    display: flex;
+    justify-content: center;
+}
+.wrong2>p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 882px;
+    margin-top: 20px;
+    height: 129px;
+    border-radius: 65px;
+    background-color: #FF0000;
+    text-align: center;
+    font-size: 75px;
+    font-family: 'Russo One', sans-serif;
+    color: #fff;
+}
+.wrongbutton{
+    display: flex;
+    justify-content: center;
+}
+.wrongbutton>button{
+    width: 650px;
+    height: 163px;
+    margin-top: 50px;
+    background-color: #2246AC;
+    font-family: 'Russo One', sans-serif;
+    font-size: 60px;
+    color: #fff;
+    cursor: pointer;
+}
+#scoreresult {
+    display: none;
+    width: 100%;
+    height: 1005px;
+}
+#white1{
+    width: 100%;
+    height: 25px;
+    background-color: #fff;
+}
+#blue{
+    width: 100%;
+    height: 80px;
+    background-color: #2246AC;
+}
+#blue>p {
+    color: #fff;
+    font-size: 60px;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+}
+#white2{
+    width: 100%;
+    height: 700px;
+    background-color: #fff;
+    display: grid;
+    justify-content: center;
+}
+#white2>p {
+    width: 1028px;
+    height: 135px;
+    font-size: 25px;
+    margin-top: 45px;
+    text-align: center;
+    line-height: 33px;
+    font-family: 'Open Sans', sans-serif;
+
+}
+.gridresult>button{
+    width: 548px;
+    height: 150px;
+    background-color: #2246AC;
+    color: #fff;
+    font-size: 50px;
+    font-family: 'Russo One', sans-serif;
+    margin-top: 60px;
+    margin-bottom: 45px;
+    border-radius: 75px;
+    grid-area: 3/3/5/4;
+    cursor: pointer;
+}
+#score {
+    font-size: 75px;
+    font-family: 'Russo One', sans-serif;
+    color: #fff;
+    width: 195px;
+    text-align: center;
+}
+.flexresult{
+    display: flex;
+    justify-content: center;
+}
+.gridresult>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #2246AC;
+    grid-area: 1/2/2/5;
+}
+.gridresult {
+    display: grid;
+    grid-template-columns: 123px 123px 548px 123px 123px;
+    grid-template-rows: 169px 59px 60px 135px 15px;
+}
+.pil{
+    width: 246.47px;
+}
+.pil:first-of-type {
+    grid-area: 2/1/4/2;
+}
+.pil:last-of-type {
+    grid-area: 2/4/4/5;
+}

@@ -28,7 +28,8 @@ route.get('/register', (req, res)=>{
 route.post('/register', (req, res) => {
     const user = new User({
         username: req.body.username,
-        password: req.body.password
+        password: req.body.password,
+        email: req.body.email
     })
     user.save((err) =>{
         if(err) {
