@@ -2,9 +2,27 @@ const express = require('express')
 require('dotenv').config()
 const path = require('path')
 const methodOverride = require('method-override')
+const session = require('express-session');
+const crypto = require('crypto');
 const cookieParser = require('cookie-parser')
 const app = express()
 const cookieJwtAuth = require('./middleware/cookieJwtAuth')
+
+
+secretcrypto = crypto.randomBytes(32).toString('hex')
+
+console.log(secretcrypto)
+
+//session opsætning
+app.use(session({
+  secret: secretcrypto,
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 60000// 1 min in milliseconds
+  }
+
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))

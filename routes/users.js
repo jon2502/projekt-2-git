@@ -1,10 +1,22 @@
 // All user gets posts Deletes goes here
 const route = require('express').Router()
+const session = require('express-session');
 const User = require('../models/user')
 require('../db')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const cookieJwtAuth = require('../middleware/cookieJwtAuth')
+
+
+route.use(session({
+    secret: secretcrypto,
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 60000// 1 min in milliseconds
+    }
+  
+  }));
 
 route.get('/', cookieJwtAuth, async(req, res)=>{
     const foundUser = await User.findOne({username: req.user.username})
