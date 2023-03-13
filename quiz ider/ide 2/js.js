@@ -1,7 +1,7 @@
 var quizContainer = document.getElementById('quiz');
-var resultContaioner = document.getElementById('result');
+var resultContaioner = document.getElementById('results');
 var submitButton = document.getElementById('submit')
-var myQuestions = [
+var questions = [
     {
         question:"1. what is the name of the 1 mana, mana rock that is a stable in commander?",
         answers: {
@@ -58,63 +58,88 @@ var myQuestions = [
 ]
 
 
-function generateQuiz(myQuestions, quizContainer, resultContaioner, submitButton){
-console.log(myQuestions)
-    function showQuestions(questions, quizContainer){
-        var output = [];
-        var answers
+generateQuiz(questions, quizContainer, resultContaioner, submitButton);
 
-        for(var i=0; i<myQuestions.length; i++){
+function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
 
-            answers = []
+  function showQuestions(questions, quizContainer){
+    // we'll need a place to store the output and the answer choices
+    var output = [];
+    var answers;
 
-            for(letter in myQuestions[i].answers){
+    // for each question...
+    for(var i=0; i<questions.length; i++){
+      
+      // first reset the list of answers
+      answers = [];
 
-                answers.push(
-                    '<lable>'
-                        + '<input type="radio" name="question' +i+'"value='+letter+'">'
-                        + letter +': '
-                        + questions[i].answers[letter]
-                    +'</lable>'
-                );
-            }
+      // for each available answer...
+      for(letter in questions[i].answers){
 
-            output.push(
-                `<div class="question"> ${questions[i].question} </div>`
-                + `<div class="answers"> ${answers.join('')} </div>`
-            );
-        }
+        // ...add an html radio button
+        answers.push(
+          `<label>`
+            + `<input type="radio" name="question${i}" value="${letter}">`
+            + letter + ': '
+            + questions[i].answers[letter]
+          + '</label>'
+        );
+      }
 
-        quizContainer.innerHTML = output.join('')
+      // add this question and its answers to the output
+      output.push(
+        `<div class="question"> ${questions[i].question} </div>`
+        + `<div class="answers"> ${answers.join('')} </div>`
+      );
     }
 
-    function showResults(myQuestions, quizContainer, resultContaioner){
+    // finally combine our output list into one string of html and put it on the page
+    quizContainer.innerHTML = output.join('');
+  }
 
-        var answersContainer = quizContainer.quuerySelectorAll('.answers');
 
-        var userAnswer ='';
-        var numCorrect= 0;
+  function showResults(questions, quizContainer, resultsContainer){
+    
+    // gather answer containers from our quiz
+    var answerContainers = quizContainer.querySelectorAll('.answers');
+    
+    // keep track of user's answers
+    var userAnswer = '';
+    var numCorrect = 0;
+    
+    // for each question...
+    for(var i=0; i<questions.length; i++){
 
-        for(var i=0; i<myQuestions.lenght; i++){
-            userAnswer = (answersContainer[i].quuerySelector('input[name=question' + i +']:checked')||{}).value;
-
-            if(userAnswer===questions[i].correctAnswer){
-                numCorrect++;
-                answersContainer[i].style.color = 'lightgreen';
-            } else {
-                answersContainer[i].style.color = 'red';
-            }
-        }
-        resultContaioner.innerHTML = `${numCorrect} out of ${questions}`
+      // find selected answer
+      userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
+      
+      // if answer is correct
+      if(userAnswer===questions[i].correctAnswer){
+        console.log(userAnswer)
+        // add to the number of correct answers
+        numCorrect++;
+        
+        // color the answers green
+        answerContainers[i].style.color = 'lightgreen';
+      }
+      // if answer is wrong or blank
+      else{
+        // color the answers red
+        answerContainers[i].style.color = 'red';
+      }
     }
 
-    showQuestions(myQuestions, quizContainer);
+    // show number of correct answers out of total
+    resultsContainer.innerHTML = `${numCorrect} out of ${questions.length}`
+  }
 
-    submitButton.onclick = function(){
-        showResults(myQuestions, quizContainer, resultContaioner);
-    }
+  // show questions right away
+  showQuestions(questions, quizContainer);
+  
+  // on submit, show results
+  submitButton.onclick = function(){
+    showResults(questions, quizContainer, resultsContainer);
+  }
 
 }
-
-generateQuiz(myQuestions, quizContainer, resultContaioner, submitButton)
 

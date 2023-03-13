@@ -85,9 +85,8 @@ route.post('/login', async (req, res)=>{
 })
 
 route.delete('/delete', async (req, res)=>{
-    const deleteUser = {
-        email: req.body.email
-    }
+    console.log('test1')
+    const deleteUser = req.body.email
     try{
         const findEmail = await User.findOne({email:deleteUser.email})
         if(findEmail !== null){
@@ -96,7 +95,7 @@ route.delete('/delete', async (req, res)=>{
                 db.collection("users").deleteOne(deleteUser, function(err, obj){
                     if (err) throw err;
                     console.log("1 document deleted");
-                    res.redirect('/')
+                    
                 })
             }
         }

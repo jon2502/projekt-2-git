@@ -1,7 +1,7 @@
 extends ../layout
 block content
     div(class="login-wrapper")
-            form(action="/users/register", method="POST", class="form form-user")
+            form(action="/users/register", method="DELETE", class="form form-user")
                 if(locals.errorMessage)
                     p=errorMessage
                 h1 Register
