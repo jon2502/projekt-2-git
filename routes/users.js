@@ -70,7 +70,7 @@ route.post('/login', async (req, res)=>{
                 res.cookie("token", token, {
                     httpOnly: true
                 })
-                res.redirect('/todos')
+                res.redirect('/quiz')
             }else{
                 // Wrong password
                 res.render('users/login', {user:findUser, errorMessage:"Wrong password!"})
