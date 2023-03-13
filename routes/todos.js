@@ -1,4 +1,4 @@
-// All todos gets, posts, Deletes goes here
+/* All todos gets, posts, Deletes goes here
 const route = require('express').Router();// All user gets posts Deletes goes here
 const Todo = require('../models/todo')
 const User = require('../models/user')
@@ -112,3 +112,4 @@ route.post('/todo', async (req, res)=>{
     }
 })
 module.exports = route
+*/
