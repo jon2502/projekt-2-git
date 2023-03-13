@@ -31,7 +31,8 @@ app.set('view engine', 'pug')
 // Routes
 const indexRouter = require('./routes/index')
 const userRoute = require('./routes/users')
-const todoRoute = require('./routes/todos');
+const todoRoute = require('./routes/todos')
+const quizRoute = require('./routes/quiz')
 
 // To pass data
 app.use(express.urlencoded({ extended: false }))
@@ -49,6 +50,7 @@ app.use(cookieParser())
 // Setup routes
 app.use('/users', userRoute)
 app.use('/todos', cookieJwtAuth, todoRoute)
+app.use('/quiz', quizRoute)
 
 // Index router / frontpage
 app.use('/', indexRouter)

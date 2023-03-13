@@ -6,17 +6,8 @@ require('../db')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const cookieJwtAuth = require('../middleware/cookieJwtAuth')
-
-
-route.use(session({
-    secret: secretcrypto,
-    resave: true,
-    saveUninitialized: true,
-    cookie: {
-      maxAge: 60000// 1 min in milliseconds
-    }
-  
-  }));
+const sessionChecker = require('../middleware/session');
+const { db } = require('../models/user');
 
 route.get('/', cookieJwtAuth, async(req, res)=>{
     const foundUser = await User.findOne({username: req.user.username})
@@ -93,5 +84,25 @@ route.post('/login', async (req, res)=>{
     }
 })
 
+route.delete('/delete', async (req, res)=>{
+    const deleteUser = {
+        email: req.body.email
+    }
+    try{
+        const findEmail = await User.findOne({email:deleteUser.email})
+        if(findEmail !== null){
+            const validateIndput = await compare(deleteUser.email, findEmail.email)
+            if(validateIndput){
+                db.collection("users").deleteOne(deleteUser, function(err, obj){
+                    if (err) throw err;
+                    console.log("1 document deleted");
+                    res.redirect('/')
+                })
+            }
+        }
+    }catch(err) {
+        
+    }
+})
 
 module.exports = route

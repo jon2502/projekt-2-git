@@ -1,0 +1,14 @@
+extends ../layout
+block content
+    div
+        include ../includes/_menu
+            form(action="/users/delete", method="POST", class="form form-user")
+                if(locals.errorMessage)
+                    p=errorMessage
+                h1 Delete user
+                div(class="form-group")
+                    label(for="email") email
+                    input(type="text",name="email",id="email")
+                div(class="form-group")
+                    button(type=submit, class="btn") Delete User
+                div(class="form-group")

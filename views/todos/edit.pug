@@ -1,7 +1,7 @@
 extends ../layout
 block content
     div.wrapper
-        include ../includes/_usermenu
+        include ../includes/_menu
         if(locals.errorMessage)
             p=errorMessage
         form(action="/todos/"+locals.todo.id+"?_method=PUT", method="POST", class="form form-todo")
