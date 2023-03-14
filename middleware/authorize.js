@@ -5,7 +5,7 @@ const autorize = (req, res, next) => {
   if(token){
     try {
       const user = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-      res.redirect("/todos")
+      res.redirect("/quiz")
     } catch (err) {
       res.clearCookie("token");
       next()

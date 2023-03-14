@@ -3,4 +3,9 @@ block content
     #quiz
     button#submit get results
     #results
+
+    form(action="/quiz/postresult", method="POST", id ="submitBtn") 
+            div(class="form-group")
+                button(type=submit, class="btn") go back
+
     script(src='/javascripts/quiz.js',type='text/javascript')

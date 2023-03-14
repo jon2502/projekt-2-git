@@ -1,6 +1,7 @@
 var quizContainer = document.getElementById('quiz');
 var resultContaioner = document.getElementById('results');
 var submitButton = document.getElementById('submit')
+var returnbtn = document.getElementById('submitBtn')
 var questions = [
     {
         question:"1. what is the name of the 1 mana, mana rock that is a stable in commander?",
@@ -22,7 +23,7 @@ var questions = [
             d: "Bruna, Anya, Lyra and Giada"
 
         },
-        correctAnswer: 'b'
+        correctAnswer: 'c'
     },
     {
         question:"3. What are the colors of the Boros Legion?",
@@ -56,6 +57,13 @@ var questions = [
         correctAnswer: 'a'
     }
 ]
+
+function removeBtn(){
+  var returnbtnDisplay = returnbtn
+  returnbtnDisplay.style.visibility = 'hidden';
+}
+removeBtn()
+
 
 
 generateQuiz(questions, quizContainer, resultContaioner, submitButton);
@@ -139,6 +147,7 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
   // on submit, show results
   submitButton.onclick = function(){
     showResults(questions, quizContainer, resultsContainer);
+    returnbtn.style.visibility="visible"
   }
 
 }
