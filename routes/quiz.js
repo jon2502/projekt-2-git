@@ -1,6 +1,7 @@
 const route = require('express').Router()
 const User = require('../models/user')
-const User = require('../models/quiz')
+const score = require('../models/score')
+require('../db')
 
 route.get('/', (req, res)=>{
     res.render('quiz/index')
