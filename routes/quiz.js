@@ -1,5 +1,6 @@
 const route = require('express').Router()
 const User = require('../models/user')
+const User = require('../models/quiz')
 
 route.get('/', (req, res)=>{
     res.render('quiz/index')
@@ -28,5 +29,6 @@ route.post('/postresult', async(req, res)=>{
         }
     }
 })
+
 
 module.exports = route
