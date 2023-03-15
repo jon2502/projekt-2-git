@@ -3,8 +3,9 @@ block content
     #quiz
     button#submit get results
     form(action="/quiz/postresult", method="POST", id ="submitBtn") 
-            
-            #score(type=text, name="score")
+            div(class="form-group")
+                label(for="score") 
+                input(type="text" name="score" id="score")
             div(class="form-group")
                 button(type=submit, class="btn") go back
 

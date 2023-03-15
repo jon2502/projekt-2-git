@@ -2,7 +2,7 @@ extends ../layout
 block content
     div
         include ../includes/_menu
-            form(action="/users/delete", method="POST", class="form form-user")
+            form(action="/users/delete", method="DELETE", class="form form-user")
                 if(locals.errorMessage)
                     p=errorMessage
                 h1 Delete user
