@@ -48,7 +48,7 @@ app.use(cookieParser())
 
 // Setup routes
 app.use('/users', userRoute)
-app.use('/quiz', quizRoute)
+app.use('/quiz',cookieJwtAuth, quizRoute)
 
 // Index router / frontpage
 app.use('/', indexRouter)

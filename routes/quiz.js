@@ -1,6 +1,6 @@
 const route = require('express').Router()
 const User = require('../models/user')
-const score = require('../models/score')
+const Score = require('../models/score')
 require('../db')
 
 route.get('/', (req, res)=>{
@@ -17,14 +17,15 @@ route.get('/delete', (req, res)=>{
 
 route.post('/postresult', async(req, res)=>{
     const findUser = await User.findOne({username: req.user.username})
+    console.log(findUser)
     if(findUser){
-        const score =new score({
-            score: req.body.score,
+        const score = new Score({
+            score: 0,
             user: findUser
         })
         const newScore = await score.save()
         if(newScore){
-            res.redirect('quiz')
+            res.redirect('/')
         } else {
             res.render('quiz/quiz1', {errorMessage: newScore, score, user:req.user})
         }

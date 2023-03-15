@@ -2,9 +2,8 @@ extends ../layout
 block content
     #quiz
     button#submit get results
-    #results
-
     form(action="/quiz/postresult", method="POST", id ="submitBtn") 
+            #results
             div(class="form-group")
                 button(type=submit, class="btn") go back
 
