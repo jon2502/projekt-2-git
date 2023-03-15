@@ -1,5 +1,5 @@
 var quizContainer = document.getElementById('quiz');
-var resultContaioner = document.getElementById('results');
+var resultContaioner = document.getElementById('score');
 var submitButton = document.getElementById('submit')
 var returnbtn = document.getElementById('submitBtn')
 var questions = [

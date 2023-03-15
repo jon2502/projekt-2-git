@@ -17,12 +17,12 @@ route.get('/delete', (req, res)=>{
 
 route.post('/postresult', async(req, res)=>{
     const findUser = await User.findOne({username: req.user.username})
-    console.log(findUser)
     if(findUser){
         const score = new Score({
-            score: 0,
+            score: req.body.score,
             user: findUser
         })
+        console.log(score)
         const newScore = await score.save()
         if(newScore){
             res.redirect('/')
