@@ -1,10 +1,17 @@
 const route = require('express').Router()
 const User = require('../models/user')
 const Score = require('../models/score')
+const score = require('../models/score')
 require('../db')
 
-route.get('/', (req, res)=>{
-    res.render('quiz/index')
+route.get('/', async(req, res)=>{
+    const findUser = await User.find({username: req.user.username})
+    if(findUser){
+        const findScore = await Score.find({user:findUser, score:score})
+    if(findScore){
+        res.render('quiz/index', {score:score, user:req.user})
+    }
+}
 })
 
 route.get('/quiz1', (req, res)=>{
@@ -31,6 +38,7 @@ route.post('/postresult', async(req, res)=>{
         }
     }
 })
+
 
 
 module.exports = route
